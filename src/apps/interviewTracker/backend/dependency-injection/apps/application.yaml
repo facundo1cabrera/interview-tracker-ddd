@@ -1,0 +1,9 @@
+services:
+
+  Apps.interviewTracker.controllers.StatusGetController:
+    class: ../../controllers/StatusGetController
+    arguments: []
+
+  Apps.interviewTracker.controllers.HiringProcessPutController:
+    class: ../../controllers/HiringProcessPutController
+    arguments: []

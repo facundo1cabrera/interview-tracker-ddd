@@ -1,0 +1,5 @@
+services: 
+
+  InterviewTracker.HiringProcesses.application.HiringProcessCreator:
+    class: ../../../../../Contexts/InterviewTracker/HiringProcesses/application/HiringProcessCreator
+    arguments: []
