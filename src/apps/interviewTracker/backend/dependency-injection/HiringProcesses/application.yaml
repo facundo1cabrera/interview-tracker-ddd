@@ -1,5 +1,20 @@
 services: 
 
+  InterviewTracker.MongoConfig:
+    factory:
+      class: ../../../../../Contexts/InterviewTracker/Shared/infrastructure/persistence/mongo/MongoConfigFactory
+      method: 'createConfig'
+
+  InterviewTracker.ConnectionManager:
+    factory:
+      class: ../../../../../Contexts/Shared/infrastructure/persistence/mongo/MongoClientFactory
+      method: 'createClient'
+    arguments: ['interviewTracker', '@InterviewTracker.MongoConfig']
+
+  InterviewTracker.HiringProcesses.domain.HiringProcessRepository:
+    class: ../../../../../Contexts/InterviewTracker/Courses/infrastructure/persistence/MongoCourseRepository
+    arguments: ['@InterviewTracker.ConnectionManager']
+
   InterviewTracker.HiringProcesses.application.HiringProcessCreator:
     class: ../../../../../Contexts/InterviewTracker/HiringProcesses/application/HiringProcessCreator
-    arguments: []
+    arguments: ["@InterviewTracker.HiringProcesses.domain.HiringProcessRepository"]
